@@ -5,7 +5,6 @@ import { writeFileSync } from 'node:fs';
 
 const { SUPABASE_URL = '', SUPABASE_ANON_KEY = '', VAPID_PUBLIC_KEY = '' } = process.env;
 
-
 if (!SUPABASE_URL || !SUPABASE_ANON_KEY) {
   console.log('build-config: SUPABASE_URL / SUPABASE_ANON_KEY not set — keeping existing public/js/config.js');
   process.exit(0);
