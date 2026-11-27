@@ -3,6 +3,14 @@
   command   = "node scripts/build-config.mjs"
   functions = "netlify/functions"
 
+# The build writes these values into public/js/config.js on purpose: the
+# Supabase URL, the anon/publishable key and the VAPID public key are designed
+# to be shipped to the browser. Tell Netlify's secrets scanner not to fail the
+# build when it finds them. Real secrets (service_role key, VAPID private key)
+# are still scanned.
+[build.environment]
+  SECRETS_SCAN_OMIT_KEYS = "SUPABASE_URL,SUPABASE_ANON_KEY,VAPID_PUBLIC_KEY"
+
 [functions]
   node_bundler = "esbuild"
 
